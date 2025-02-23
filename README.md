@@ -1,2 +1,2 @@
-# Сообщество Catrabot
+# Сообщество Catrabat
 # Для проектов из Pocket Code
