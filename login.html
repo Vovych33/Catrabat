@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Catrabat</title>
+    </head>
+    <body>
+        <div class="box">
+            <div class="form">
+                <h2>Вход</h2>
+                <form>
+                    <div class="inputbox">
+                        <input type="text" value="" id="username" required>
+                        <span>Никнейм</span>
+                    </div>
+                    <div class="inputbox">
+                        <input type="password" value="" id="pass" required>
+                        <span>Пароль</span>
+                    </div>
+                    <input type="submit" value="Войти" class="sub" id="login">
+                </form>
+            </div>
+        </div>
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+            import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyCpn_uLzZwmV4QnVc_rFxblhpUwiiNJ29I",
+                authDomain: "catrabat-8a966.firebaseapp.com",
+                projectId: "catrabat-8a966",
+                storageBucket: "catrabat-8a966.firebasestorage.app",
+                messagingSenderId: "734379084244",
+                appId: "1:734379084244:web:da8058a636c120c3a82e41"
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase(app);
+
+            document.getElementById("login").addEventListener('click', function(e) {
+                e.preventDefault();
+                const username = document.getElementById("username").value;
+                const password = document.getElementById("pass").value;
+
+                // Check if the username exists
+                get(child(ref(db), 'users/' + username)).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        // Verify the password
+                        const userData = snapshot.val();
+                        if (userData.pass === password) {
+                            alert("Вы вошли");
+							localStorage.setItem('username', username); // Сохраняем имя пользователя в локальном хранилище
+                            window.location.href = "index.html"; // // Перенаправление на главную страницу
+                        } else {
+                            alert("Неверный пароль");
+                        }
+                    } else {
+                        alert("Пользователь не найден");
+                    }
+                }).catch((error) => {
+                    console.error("Ошибка при проверке имени пользователя:", error);
+                });
+            });
+        </script>
+    </body>
+</html>
