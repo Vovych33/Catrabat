@@ -45,7 +45,7 @@ window.onload = function() {
     checkLoginStatus(); // Проверяем состояние входа
     createProfileButton(); // Создаем кнопку "Профиль"
 
-    // Обработка отправки формы
+    // Обработка отправки формы входа
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         loginForm.onsubmit = function(event) {
@@ -53,7 +53,7 @@ window.onload = function() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            // Здесь должна быть ваша логика проверки учетных данных
+            // Простая логика проверки учетных данных
             if (username === 'user' && password === 'pass') {
                 const userData = { username: username }; // Пример данных пользователя
                 localStorage.setItem('userData', JSON.stringify(userData)); // Сохраняем данные пользователя в localStorage
