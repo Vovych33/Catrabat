@@ -1,58 +1,85 @@
-<html>
-    <head>
-        <title>Профиль</title>
-    </head>
-    <body>
-        <div class="box">
-            <h2>Ваш профиль</h2>
-            <div id="userData"></div>
-            <button id="logout">Выйти</button>
-        </div>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Ваш профиль</h2>
+        <div id="userData"></div>
+        <button id="logout">Выйти</button>
+    </div>
 
-        <script type="module">
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-            import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+        import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
 
-            const firebaseConfig = {
-                apiKey: "AIzaSyCpn_uLzZwmV4QnVc_rFxblhpUwiiNJ29I",
-                authDomain: "catrabat-8a966.firebaseapp.com",
-                projectId: "catrabat-8a966",
-                storageBucket: "catrabat-8a966.firebasestorage.app",
-                messagingSenderId: "734379084244",
-                appId: "1:734379084244:web:da8058a636c120c3a82e41"
-            };
+        const firebaseConfig = {
+            apiKey: "AIzaSyCpn_uLzZwmV4QnVc_rFxblhpUwiiNJ29I",
+            authDomain: "catrabat-8a966.firebaseapp.com",
+            projectId: "catrabat-8a966",
+            storageBucket: "catrabat-8a966.firebasestorage.app",
+            messagingSenderId: "734379084244",
+            appId: "1:734379084244:web:da8058a636c120c3a82e41"
+        };
 
-            const app = initializeApp(firebaseConfig);
-            const db = getDatabase(app);
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
 
-            // Получаем имя пользователя из локального хранилища или URL
-            const username = localStorage.getItem('username');
-            if (!username) {
-                alert("Пожалуйста, войдите в систему.");
-                window.location.href = "login.html"; // Перенаправление на страницу входа
-            } else {
-                // Получаем данные пользователя из базы данных
-                get(child(ref(db), 'users/' + username)).then((snapshot) => {
-                    if (snapshot.exists()) {
-                        const userData = snapshot.val();
-                        document.getElementById("userData").innerHTML = `
-                            <p><strong>Никнейм:</strong> ${username}</p>
-                            <p><strong>Email:</strong> ${userData.email}</p>
-                            <p><strong>Пароль:</strong> ${userData.pass}</p>
-                        `;
-                    } else {
-                        alert("Данные пользователя не найдены.");
-                    }
-                }).catch((error) => {
-                    console.error("Ошибка при получении данных пользователя:", error);
-                });
-            }
-
-            // Функция выхода
-            document.getElementById("logout").addEventListener('click', function() {
-                localStorage.removeItem('username'); // Удаляем имя пользователя из локального хранилища
-                window.location.href = "login.html"; // Перенаправление на страницу входа
+        // Проверка имени пользователя
+        const username = localStorage.getItem('username');
+        if (!username) {
+            window.location.href = "login.html"; // Перенаправление на страницу входа
+        } else {
+            // Получаем данные пользователя из базы данных
+            get(child(ref(db), 'users/' + username)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const userData = snapshot.val();
+                    document.getElementById("userData").innerHTML = `
+                        <p><strong>Никнейм:</strong> ${username}</p>
+                        <p><strong>Email:</strong> ${userData.email}</p>
+                        <p><strong>Пароль:</strong> *****</p>
+                    `;
+                } else {
+                    alert("Данные пользователя не найдены.");
+                }
+            }).catch((error) => {
+                console.error("Ошибка при получении данных пользователя:", error);
             });
-        </script>
-    </body>
+        }
+
+        // Функция выхода
+        document.getElementById("logout").addEventListener('click', function() {
+            localStorage.removeItem('username'); // Удаляем имя пользователя из локального хранилища
+            window.location.href = "login.html"; // Перенаправление на страницу входа
+        });
+    </script>
+</body>
 </html>

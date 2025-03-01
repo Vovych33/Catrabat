@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Отключаем горизонтальную прокрутку */
+}
+
+#loading {
+    display: none;
+    color: green;
+}
+
+.menu-container {
+    position: relative;
+    display: inline-block;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Скрытое положение по умолчанию */
+    width: 250px;
+    height: 100%;
+    background-color: #333; /* Цвет фона боковой панели */
+    color: white;
+    transition: left 0.3s ease; /* Плавный переход при открытии */
+    padding: 20px;
+    z-index: 999; /* Более низкий z-index для боковой панели */
+}
+
+.hamburger {
+    font-size: 30px;
+    cursor: pointer;
+	z-index: 1; /* Убедитесь, что кнопка позади панели */
+    background: none;
+    border: none;
+    color: #333;
+    position: absolute; /* Изменено на absolute для позиционирования внутри header */
+    top: 10px; /* Отступ сверху */
+    left: 20px; /* Отступ слева */
+}
+
+.sidebar.active {
+    left: 0; /* Позиция при активации */
+}
+
+.menu-item {
+    display: block;
+    margin: 10px 0;
+    background-color: #444; /* Цвет фона для элементов меню */
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.close-btn {
+    background-color: red; /* Цвет для кнопки закрытия */
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.login-btn, .profile-btn {
+    background-color: #007bff; /* Синий цвет для кнопки */
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 20px; /* Отступ сверху для отделения от других кнопок */
+    width: 100%; /* Занимает всю ширину панели */
+    transition: background-color 0.3s ease; /* Плавный переход цвета */
+}
+
+.login-btn:hover, .profile-btn:hover {
+    background-color: #0056b3; /* Более темный синий цвет при наведении */
+}
+
+header {
+    display: flex;
+    justify-content: space-between; /* Размещаем элементы по краям */
+    align-items: center; /* Вертикальное выравнивание */
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    position: relative; /* Для корректной работы абсолютного позиционирования кнопки */
+}
+
+h1 {
+    margin: 0;
+    flex-grow: 1; /* Позволяет заголовку занимать доступное пространство */
+    text-align: center; /* Центрирование текста */
+}
+
+/* Новый стиль для центрирования заголовка */
+.centered-header {
+    display: flex;
+    align-items: center; /* Вертикальное выравнивание */
+    width: 100%; /* Занимает всю ширину */
+}

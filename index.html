@@ -4,23 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сообщество Catrabat</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Подключение CSS -->
+    <script src="script.js" defer></script> <!-- Подключение JS -->
 </head>
 <body>
-    <header>
-	<h1>Catrabat</h1>
-        <nav>
-            <a href="register.html"><button>Регистрация</button></a>
-            <a href="login.html"><button>Вход</button></a>
-			<a href="profile.html"><button>Профиль</button></a>
+    <header class="centered-header">
+        <button class="hamburger" id="hamburger" aria-label="Меню">☰</button>
+        <h1>Catrabat</h1>
+        <nav class="nav-right">
+            <a href="#"><button>🔍</button></a>
         </nav>
     </header>
+
     <main>
-		<br><br><br>
+        <h2>Загрузите файл</h2>
+        <form id="upload-form" enctype="multipart/form-data">
+            <input type="file" id="file-input" accept=".txt" required>
+            <button type="submit">Загрузить</button>
+        </form>
+        <div id="loading" style="display:none;">Загрузка...</div> <!-- Скрываем по умолчанию -->
+
+        <h2>Список проектов</h2>
+        <ul id="file-list"></ul>
+        <br><br><br>
         <h3>В разработке...</h3>
         <p>Автор: Vovych33</p>
     </main>
-    <script type="module">
-</script>
+    <div class="menu-container">
+        <div class="sidebar" id="sidebar">
+            <button class="close-btn" id="close-btn" aria-label="Закрыть меню">✖</button>
+            <h1>Catrabat</h1>
+            <div id="auth-btn-container"></div>
+        </div>
+    </div>
 </body>
 </html>

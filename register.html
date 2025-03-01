@@ -19,7 +19,7 @@
                         <input type="text" value="" id="pass" required>
                         <span>Пароль</span>
                     </div>
-                    <input type="submit" value="Войти" class="sub" id="login">
+                    <input type="submit" value="Регистрация" class="sub" id="register">
                 </form>
             </div>
         </div>
@@ -44,7 +44,7 @@
 		// get ref to database services
 		const db = getDatabase(app);
   
-		document.getElementById("login").addEventListener('click', function(e) {
+		document.getElementById("register").addEventListener('click', function(e) {
                 e.preventDefault();
                 const username = document.getElementById("username").value;
 
