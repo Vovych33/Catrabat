@@ -4,6 +4,7 @@ let isLoggedIn = false;
 // Проверка состояния входа пользователя
 function checkLoginStatus() {
     isLoggedIn = !!localStorage.getItem('userData'); // Устанавливаем состояние входа
+    console.log("Статус входа:", isLoggedIn);
 }
 
 // Управление боковой панелью
@@ -53,7 +54,6 @@ window.onload = function() {
             const password = document.getElementById('password').value;
 
             // Здесь должна быть ваша логика проверки учетных данных
-            // Для примера, допустим, имя пользователя "user" и пароль "pass"
             if (username === 'user' && password === 'pass') {
                 const userData = { username: username }; // Пример данных пользователя
                 localStorage.setItem('userData', JSON.stringify(userData)); // Сохраняем данные пользователя в localStorage
