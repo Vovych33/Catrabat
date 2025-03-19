@@ -12,6 +12,7 @@ const hamburger = document.getElementById('hamburger');
 const sidebar = document.getElementById('sidebar');
 const closeBtn = document.getElementById('close-btn');
 
+// Открытие и закрытие боковой панели
 if (hamburger) {
     hamburger.addEventListener('click', function() {
         sidebar.classList.toggle('active'); // Переключение класса для открытия/закрытия боковой панели
@@ -24,15 +25,15 @@ if (closeBtn) {
     });
 }
 
-// Функция для создания кнопки "Профиль"
+// Функция для создания кнопки "Профиль" или "Войти"
 function createProfileButton() {
     const authBtnContainer = document.getElementById('auth-btn-container');
     authBtnContainer.innerHTML = ''; // Очистка контейнера
 
     const button = document.createElement('button');
     button.className = 'profile-btn';
-    button.textContent = 'Профиль';
-    
+    button.textContent = isLoggedIn ? 'Профиль' : 'Войти'; // Меняем текст в зависимости от статуса входа
+
     button.onclick = function() {
         window.location.href = isLoggedIn ? "profile.html" : "login.html"; // Переход на страницу профиля или входа
     };
@@ -43,7 +44,7 @@ function createProfileButton() {
 // Вызываем функцию при загрузке страницы
 window.onload = function() {
     checkLoginStatus(); // Проверяем состояние входа
-    createProfileButton(); // Создаем кнопку "Профиль"
+    createProfileButton(); // Создаем кнопку "Профиль" или "Войти"
 
     // Обработка отправки формы входа
     const loginForm = document.getElementById('login-form');
