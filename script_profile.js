@@ -37,6 +37,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebas
 
         // Функция выхода
         document.getElementById("logout").addEventListener('click', function() {
-            localStorage.removeItem('username'); // Удаляем имя пользователя из локального хранилища
+            localStorage.removeItem('userData'); // Удаляем имя пользователя из локального хранилища
             window.location.href = "login.html"; // Перенаправление на страницу входа
         });
