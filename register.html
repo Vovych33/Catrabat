@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Catrabat</title>
-    </head>
+	</head>
     <body>
         <div class="box">
             <div class="form">
@@ -23,48 +23,6 @@
                 </form>
             </div>
         </div>
-        <script type="module">
-		// Import the functions you need from the SDKs you need
-		import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-		import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
-
-		// Your web app's Firebase configuration
-		const firebaseConfig = {
-			apiKey: "AIzaSyCpn_uLzZwmV4QnVc_rFxblhpUwiiNJ29I",
-			authDomain: "catrabat-8a966.firebaseapp.com",
-			projectId: "catrabat-8a966",
-			storageBucket: "catrabat-8a966.firebasestorage.app",
-			messagingSenderId: "734379084244",
-			appId: "1:734379084244:web:da8058a636c120c3a82e41"
-		};
-
-		// Initialize Firebase
-		const app = initializeApp(firebaseConfig);
-  
-		// get ref to database services
-		const db = getDatabase(app);
-  
-		document.getElementById("register").addEventListener('click', function(e) {
-                e.preventDefault();
-                const username = document.getElementById("username").value;
-
-                // Check if the username already exists
-                get(child(ref(db), 'users/' + username)).then((snapshot) => {
-                    if (snapshot.exists()) {
-                        alert("Имя пользователя занято");
-                    } else {
-                        // If the username does not exist, proceed to register
-                        set(ref(db, 'users/' + username), {
-                            email: document.getElementById("email").value,
-                            pass: document.getElementById("pass").value
-                        });
-                        alert("Вы зарегистрировались");
-						window.location.href="index.html";
-                    }
-                }).catch((error) => {
-                    console.error("Ошибка при проверке имени пользователя:", error);
-                });
-            });
-		</script>
+        <script type="module" src="script_register.js"></script> <!-- Подключение JS -->
     </body>
 </html>
