@@ -18,8 +18,10 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebas
 		if (!userData) {
             window.location.href = "login.html"; // Перенаправление на страницу входа
         } else {
-			const username = localStorage.getItem('username');
-            // Получаем данные пользователя из базы данных
+			const user = JSON.parse(userData); // Парсим данные пользователя
+			const username = user.username; // Получаем имя пользователя из объекта
+			
+        // Получаем данные пользователя из базы данных
             get(child(ref(db), 'users/' + username)).then((snapshot) => {
                 if (snapshot.exists()) {
                     const userData = snapshot.val();
@@ -38,6 +40,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebas
 
         // Функция выхода
         document.getElementById("logout").addEventListener('click', function() {
-            localStorage.removeItem('userData'); // Удаляем имя пользователя из локального хранилища
+            localStorage.removeItem('userData'); // Удаляем данные из локального хранилища
             window.location.href = "login.html"; // Перенаправление на страницу входа
         });
