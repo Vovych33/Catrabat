@@ -14,8 +14,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebas
         const db = getDatabase(app);
 
         // Проверка имени пользователя
-        const username = localStorage.getItem('userData');
-        if (!username) {
+        const userData = localStorage.getItem('userData');
+		if (!userData) {
             window.location.href = "login.html"; // Перенаправление на страницу входа
         } else {
             // Получаем данные пользователя из базы данных
