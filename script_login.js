@@ -26,7 +26,6 @@ document.getElementById("login-form").addEventListener('submit', function(e) {
             // Проверка пароля
             const userData = snapshot.val();
             if (userData.pass === password) {
-                alert("Вы вошли");
                 localStorage.setItem('userData', JSON.stringify({ username, email: userData.email }));
                 window.location.href = "index.html"; // Перенаправление на главную страницу
             } else {

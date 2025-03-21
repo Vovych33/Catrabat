@@ -1,0 +1,121 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+	margin-top: 10;
+    color: #333;
+	position: relative;
+    top: -20px;
+}
+
+.inputbox {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.inputbox input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.inputbox input:focus {
+    border-color: #007bff; /* Цвет рамки при фокусе */
+    outline: none; /* Убираем стандартный контур */
+}
+
+.inputbox span {
+    position: absolute;
+    left: 10px;
+    top: -10px; /* Подняли текст выше */
+    font-size: 12px; /* Уменьшили размер текста */
+    color: #999;
+    transition: 0.3s;
+}
+
+.inputbox input:focus + span,
+.inputbox input:not(:placeholder-shown) + span {
+    top: -20px; /* Дополнительно поднимаем текст при фокусе */
+    left: 10px;
+    font-size: 12px;
+    color: #007bff; /* Цвет текста при фокусе */
+}
+
+.sub {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sub:hover {
+    background-color: #0056b3; /* Темнее при наведении */
+}
+
+.links {
+    display: flex;
+    justify-content: space-between; /* Распределяет пространство между элементами */
+    margin-top: 15px; /* Отступ сверху */
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+.register-btn,
+.reset-btn {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.register-btn:hover {
+    background-color: #0056b3; /* Темнее при наведении */
+}
+
+/* Дополнительный стиль для кнопки "Забыли пароль?" */
+.reset-btn {
+    margin-left: 10px; /* Отступ между кнопками */
+    padding: 10px 15px; /* Паддинг для кнопки "Забыли пароль?" */
+    background-color: transparent; /* Фон прозрачный для ссылки */
+    color: #007bff; /* Цвет текста */
+    border: none; /* Убираем рамку */
+    text-decoration: none; /* Убираем подчеркивание */
+    cursor: pointer; /* Курсор в виде указателя */
+}

@@ -1,3 +1,4 @@
+/* Основные стили для body */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,11 +6,13 @@ body {
     overflow-x: hidden; /* Отключаем горизонтальную прокрутку */
 }
 
+/* Стили для загрузочного индикатора */
 #loading {
     display: none;
     color: green;
 }
 
+/* Стили для боковой панели */
 .menu-container {
     position: relative;
     display: inline-block;
@@ -25,13 +28,14 @@ body {
     color: white;
     transition: left 0.3s ease; /* Плавный переход при открытии */
     padding: 20px;
-    z-index: 999; /* Более низкий z-index для боковой панели */
+    z-index: 999; /* Более высокий z-index для боковой панели */
 }
 
+/* Стиль для кнопки гамбургера */
 .hamburger {
     font-size: 30px;
     cursor: pointer;
-	z-index: 1; /* Убедитесь, что кнопка позади панели */
+    z-index: 1; /* Убедитесь, что кнопка позади панели */
     background: none;
     border: none;
     color: #333;
@@ -40,10 +44,12 @@ body {
     left: 20px; /* Отступ слева */
 }
 
+/* Активное состояние боковой панели */
 .sidebar.active {
     left: 0; /* Позиция при активации */
 }
 
+/* Стили для элементов меню */
 .menu-item {
     display: block;
     margin: 10px 0;
@@ -54,6 +60,7 @@ body {
     cursor: pointer;
 }
 
+/* Стили для кнопки закрытия */
 .close-btn {
     background-color: red; /* Цвет для кнопки закрытия */
     border: none;
@@ -62,6 +69,7 @@ body {
     cursor: pointer;
 }
 
+/* Стили для кнопок входа и профиля */
 .login-btn, .profile-btn {
     background-color: #007bff; /* Синий цвет для кнопки */
     border: none;
@@ -73,10 +81,12 @@ body {
     transition: background-color 0.3s ease; /* Плавный переход цвета */
 }
 
+/* Эффект наведения для кнопок */
 .login-btn:hover, .profile-btn:hover {
     background-color: #0056b3; /* Более темный синий цвет при наведении */
 }
 
+/* Стили для заголовка */
 header {
     display: flex;
     justify-content: space-between; /* Размещаем элементы по краям */
@@ -87,6 +97,7 @@ header {
     position: relative; /* Для корректной работы абсолютного позиционирования кнопки */
 }
 
+/* Стили для заголовка h1 */
 h1 {
     margin: 0;
     flex-grow: 1; /* Позволяет заголовку занимать доступное пространство */
