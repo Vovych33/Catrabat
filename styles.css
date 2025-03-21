@@ -40,8 +40,17 @@ body {
     border: none;
     color: #333;
     position: absolute; /* Изменено на absolute для позиционирования внутри header */
-    top: 10px; /* Отступ сверху */
     left: 20px; /* Отступ слева */
+}
+
+.search-button {
+    border: none; /* Без рамки */
+    padding: 10px 15px; /* Отступы */
+    text-align: center; /* Выравнивание текста */
+    font-size: 16px; /* Размер шрифта */
+    margin: 4px 40px; /* Отступы вокруг кнопки */
+    cursor: pointer; /* Курсор при наведении */
+    border-radius: 5px; /* Закругленные углы */
 }
 
 /* Активное состояние боковой панели */
