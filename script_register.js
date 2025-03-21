@@ -36,7 +36,6 @@ document.getElementById("register-form").addEventListener('submit', function(e) 
                 pass: password
             });
             localStorage.setItem('userData', JSON.stringify({ username, email })); // Сохраняем данные в localStorage
-            alert("Вы зарегистрировались");
             // Очистка полей ввода (если нужно)
             document.getElementById("username").value = '';
             document.getElementById("email").value = '';
