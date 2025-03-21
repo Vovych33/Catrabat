@@ -14,21 +14,34 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-document.getElementById("register").addEventListener('click', function(e) {
-    e.preventDefault();
+document.getElementById("register-form").addEventListener('submit', function(e) {
+    e.preventDefault(); // Предотвращаем стандартное поведение формы
+
     const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("pass").value;
+
+    // Проверка на заполненность полей
+    if (!username || !email || !password) {
+        alert("Пожалуйста, заполните все обязательные поля.");
+        return; // Прерываем выполнение, если поля не заполнены
+    }
 
     get(child(ref(db), 'users/' + username)).then((snapshot) => {
         if (snapshot.exists()) {
             alert("Имя пользователя занято");
         } else {
             set(ref(db, 'users/' + username), {
-                email: document.getElementById("email").value,
-                pass: document.getElementById("pass").value
+                email: email,
+                pass: password
             });
-			localStorage.setItem('userData', JSON.stringify({ username, email })); // Сохраняем данные в localStorage
+            localStorage.setItem('userData', JSON.stringify({ username, email })); // Сохраняем данные в localStorage
             alert("Вы зарегистрировались");
-            window.location.href = "index.html";
+            // Очистка полей ввода (если нужно)
+            document.getElementById("username").value = '';
+            document.getElementById("email").value = '';
+            document.getElementById("pass").value = '';
+            window.location.href = "index.html"; // Перенаправление на главную страницу
         }
     }).catch((error) => {
         console.error("Ошибка при проверке имени пользователя:", error);
